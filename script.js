@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initGame() {
-  let playerChoice = "";
-  let computerChoice = "";
   document.querySelector("#player1").className = "player";
   document.querySelector("#player2").className = "player";
   //   add event listeners for buttons
