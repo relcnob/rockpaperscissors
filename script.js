@@ -38,7 +38,7 @@ function pChoice_scissors() {
 }
 
 function startGame() {
-  let choiceArray = ["rock", "paper", "scissors"];
+  const choiceArray = ["rock", "paper", "scissors"];
   computerChoice = choiceArray[Math.floor(Math.random() * (2 - 0 + 1) + 0)];
   console.log("computerChoice = " + computerChoice);
   //   hide previous outcome
