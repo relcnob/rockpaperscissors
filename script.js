@@ -1,13 +1,12 @@
 // RPM game
-document.addEventListener("DOMContentLoaded", () => {
-  initGame();
-});
+
+document.addEventListener("DOMContentLoaded", initGame);
 
 function initGame() {
+  // reset sprites
   document.querySelector("#player1").className = "player";
   document.querySelector("#player2").className = "player";
   //   add event listeners for buttons
-
   document
     .querySelector("#buttons .rock")
     .addEventListener("click", pChoice_rock);
@@ -20,27 +19,23 @@ function initGame() {
 }
 
 function pChoice_rock() {
-  console.log("Player clicked rock");
   playerChoice = "rock";
   startGame();
 }
 
 function pChoice_paper() {
-  console.log("Player clicked paper");
   playerChoice = "paper";
   startGame();
 }
 
 function pChoice_scissors() {
-  console.log("Player clicked scissors");
   playerChoice = "scissors";
   startGame();
 }
 
 function startGame() {
   const choiceArray = ["rock", "paper", "scissors"];
-  computerChoice = choiceArray[Math.floor(Math.random() * (2 - 0 + 1) + 0)];
-  console.log("computerChoice = " + computerChoice);
+  computerChoice = choiceArray[Math.floor(Math.random() * 3)];
   //   hide previous outcome
   document.querySelector("#draw").className = "hidden";
   document.querySelector("#win").className = "hidden";
@@ -64,18 +59,10 @@ function showOutcome() {
     (playerChoice == "paper" && computerChoice == "rock") ||
     (playerChoice == "scissors" && computerChoice == "paper")
   ) {
-    // playerWin();
-    console.log("player wins");
     document.querySelector("#win").classList.remove("hidden");
-  } else if (
-    (computerChoice == "rock" && playerChoice == "scissors") ||
-    (computerChoice == "paper" && playerChoice == "rock") ||
-    (computerChoice == "scissors" && playerChoice == "paper")
-  ) {
-    console.log("computer wins");
-    document.querySelector("#lose").classList.remove("hidden");
-  } else {
-    console.log("draw");
+  } else if (computerChoice == playerChoice) {
     document.querySelector("#draw").classList.remove("hidden");
+  } else {
+    document.querySelector("#lose").classList.remove("hidden");
   }
 }
